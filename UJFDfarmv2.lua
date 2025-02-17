@@ -1,4 +1,4 @@
--- Welcome to AWP!
+
 task.wait(2)
 local players = game:GetService("Players")
 local lplayer = players.LocalPlayer
