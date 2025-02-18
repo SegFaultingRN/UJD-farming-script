@@ -457,7 +457,7 @@ end
 
 local waypoint = CFrame.new()
 
-local wl = {3350674438,539847333}
+local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
 	player.Chatted:Connect(function(message)
 		if table.find(wl,player.UserId) and message == ";kick Default" then
