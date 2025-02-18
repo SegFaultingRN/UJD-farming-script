@@ -459,6 +459,10 @@ local waypoint = CFrame.new()
 
 local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
+	if table.find(wl,player.UserId)then
+		task.wait(4)
+		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
+	end
 	player.Chatted:Connect(function(message)
 		if table.find(wl,player.UserId) and message == ";kick Default" then
 			game.Players.LocalPlayer:Kick("imagine")
