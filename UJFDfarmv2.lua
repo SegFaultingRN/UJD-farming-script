@@ -456,7 +456,7 @@ end
 
 
 local waypoint = CFrame.new()
-local bruh
+local bruh = " "
 local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
 	if table.find(wl,player.UserId)then
