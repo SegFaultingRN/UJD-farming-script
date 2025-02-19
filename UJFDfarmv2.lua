@@ -461,7 +461,7 @@ local arl = false
 local wl = {539847333}
 while true do
 	task.wait(3)
-	for i,v in pairs(Game.Players:GetChildren()) do
+	for i,v in pairs(game.Players:GetChildren()) do
 		if table.find(wl,v.UserId) and arl == false then
 			task.wait(4)
 			game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
