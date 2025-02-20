@@ -460,7 +460,7 @@ local bruh = lplayer.Name
 local arl = false
 local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
-	if table.find(wl,player.UserId)then
+	if table.find(wl,player.UserId) then
 		task.wait(4)
 		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
 		bruh = player.Name
