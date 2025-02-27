@@ -15,7 +15,7 @@ local check = Instance.new("Frame")
 check.Position = UDim2.new(0,400,0,400)
 check.Parent = v3rmhub
 local code = Instance.new("TextBox", check)
-local code_of_day = "\52\101\114\53\51\101\120\90\45\56\57\55\55\57\48\69\90\80\45\35\36\37\105\101\104\100\110\105\114\51\52"
+local code_of_day = "\48\103\89\56\38\111\77\66\37\38\85\48\87\110\98\83\67\69\82\102\49\103\82\53"
 local valid = false
 check.BackgroundColor3 = Color3.new(0, 0, 0)
 code.BackgroundColor3 = Color3.new(1, 0.996078, 0.996078)
@@ -26,7 +26,7 @@ uc3.CornerRadius = UDim.new(0,15)
 uc3.Parent = check
 code.Size = UDim2.new(0,500,0,50)
 code.Position = UDim2.new(0,0,0,50)
-code.PlaceholderText = "enter daily key here"
+code.PlaceholderText = "enter daily key here (new daily key)"
 code.Text = ""
 repeat
 	task.wait()
