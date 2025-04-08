@@ -11,7 +11,7 @@ v3rmhub.Parent = game:GetService("CoreGui")
 v3rmhub.Enabled = true
 v3rmhub.ResetOnSpawn = false
 v3rmhub.Name = "v3rmhub"
-local check = Instance.new("Frame")
+--[[local check = Instance.new("Frame")
 check.Position = UDim2.new(0,400,0,400)
 check.Parent = v3rmhub
 local code = Instance.new("TextBox", check)
@@ -28,7 +28,7 @@ code.Size = UDim2.new(0,500,0,50)
 code.Position = UDim2.new(0,0,0,50)
 code.PlaceholderText = "enter daily key here (new daily key)"
 code.Text = ""
---[[repeat
+repeat
 	task.wait()
 	code:GetPropertyChangedSignal("Text"):Connect(function()
 		if code.Text == code_of_day then
