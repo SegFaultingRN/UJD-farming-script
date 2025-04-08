@@ -28,7 +28,7 @@ code.Size = UDim2.new(0,500,0,50)
 code.Position = UDim2.new(0,0,0,50)
 code.PlaceholderText = "enter daily key here (new daily key)"
 code.Text = ""
-repeat
+--[[repeat
 	task.wait()
 	code:GetPropertyChangedSignal("Text"):Connect(function()
 		if code.Text == code_of_day then
@@ -39,7 +39,7 @@ repeat
 			script:Destroy()
 		end
 	end)
-until valid == true
+until valid == true--]]
 
 local function Load()
 	local loading =  Instance.new("Frame")
