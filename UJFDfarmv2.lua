@@ -7,6 +7,7 @@ local t = game:GetService("Chat")
 local background = Color3.fromRGB(0,0,0)
 local highlight = Color3.fromRGB(72, 72, 72)
 local v3rmhub = Instance.new("ScreenGui")
+local tx = game:GetService("TextChatService")
 v3rmhub.Parent = game:GetService("CoreGui")
 v3rmhub.Enabled = true
 v3rmhub.ResetOnSpawn = false
@@ -462,7 +463,7 @@ local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
 	if table.find(wl,player.UserId) then
 		task.wait(4)
-		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer("....", "All")
+		tx.ChatInputBarConfiguration.TargetTextChannel:SendAsync("....")
 		bruh = player.Name
 	
 		task.wait() 
