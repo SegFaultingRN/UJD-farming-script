@@ -516,7 +516,7 @@ maketogglebutton("skullfinder","farmingpage", "Skull Farmer (Blatant)", gah, fun
 			
 			notify("Skull has spawned")
 			thing.Skull.ClickDetector.MaxActivationDistance = math.huge
-			fireclickdetector(thing.Skull.ClickDetector, math.huge)
+			fireclickdetector(thing.Skull.ClickDetector, 10000)
 			notify("Collected")
 			skullcount += 1
 			task.wait(2)
