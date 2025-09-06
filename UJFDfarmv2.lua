@@ -526,3 +526,29 @@ maketogglebutton("skullfinder","farmingpage", "Skull Farmer (Blatant)", gah, fun
 	end) end,
 	function()
 end)
+local coinfinderenabled = false
+maketogglebutton("coinfinder", "farmingpage", "Coin Farmer", rizz, function()
+	coinfinderenabled = true
+	game.Workspace.ChildAdded:Connect(function(t)
+	if coinfinderenabled == true then
+    	local rootpart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+ 
+    	task.wait()
+    	if t:IsA("Model") then
+        	 --print(t.Name)
+        	task.wait()
+       	 if t.PrimaryPart:FindFirstChild("TouchInterest") then
+        	    print("tr")
+         	   	task.wait() 
+           	 	firetouchinterest(t.PrimaryPart, rootpart, 0)
+             	task.wait()
+            	firetouchinterest(t.PrimaryPart, rootpart, 1)
+       
+        	end
+    	end
+	end
+	end)
+
+end, function()
+	coinfinderenabled = false
+end)
