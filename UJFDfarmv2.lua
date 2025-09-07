@@ -561,7 +561,7 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", t, function
  	   for i2,v2 in pairs(chara:GetDescendants()) do
    	    	 if v2.Name == "AttackHumanoid" then
     	    --local g = chara:Find
-   
+			   print(t)
    		       v.Character.HumanoidRootPart.Transparency = 0.5
    		       v.Character.HumanoidRootPart.Size = Vector3.new(tonumber(t),tonumber(t),tonumber(t))
       		  end
