@@ -552,18 +552,19 @@ maketogglebutton("coinfinder", "farmingpage", "Coin Farmer", rizz, function()
 end, function()
 	coinfinderenabled = false
 end)
-
+local ht;
 maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", t, function()
 	local players = game:GetService("Players")
 	local rs = game:GetService("ReplicatedStorage").Morphs
+	ht = t
 	for i,v in pairs(players:GetChildren()) do
 	    local chara = v.Character
  	   for i2,v2 in pairs(chara:GetDescendants()) do
    	    	 if v2.Name == "AttackHumanoid" then
     	    --local g = chara:Find
-			   print(t)
+			   --print(t)
    		       v.Character.HumanoidRootPart.Transparency = 0.5
-   		       v.Character.HumanoidRootPart.Size = Vector3.new(tonumber(t),tonumber(t),tonumber(t))
+   		       v.Character.HumanoidRootPart.Size = Vector3.new(tonumber(ht),tonumber(ht),tonumber(ht))
       		  end
    		 end
 	end
