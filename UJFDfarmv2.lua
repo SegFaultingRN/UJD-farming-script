@@ -557,7 +557,7 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", rok, functi
 	
 	local rs = game:GetService("ReplicatedStorage").Morphs
 	ht = rok
-	print(ht)
+	print(rok)
 	for i,v in pairs(players:GetChildren()) do
 	    local chara = v.Character
  	   for i2,v2 in pairs(chara:GetDescendants()) do
