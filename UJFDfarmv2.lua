@@ -553,11 +553,11 @@ end, function()
 	coinfinderenabled = false
 end)
 local ht = ""
-maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", rok, function()
+maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", usetext, function()
 	
 	local rs = game:GetService("ReplicatedStorage").Morphs
-	ht = rok
-	print(rok)
+	ht = usetext
+	print(ht)
 	for i,v in pairs(players:GetChildren()) do
 	    local chara = v.Character
  	   for i2,v2 in pairs(chara:GetDescendants()) do
