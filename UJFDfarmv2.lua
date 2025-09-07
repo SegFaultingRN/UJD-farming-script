@@ -554,7 +554,7 @@ end, function()
 end)
 local ht = ""
 maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", t, function()
-	local players = game:GetService("Players")
+	
 	local rs = game:GetService("ReplicatedStorage").Morphs
 	ht = t
 	print(ht)
@@ -571,3 +571,4 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", t, function
 	end
 
 end)
+maketextboxbutton()
