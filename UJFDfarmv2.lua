@@ -201,7 +201,7 @@ local function notify(message)
 end
 
 makepagebutton("farming",UDim2.new(0,0,0,60),"Farming")
---makepagebutton("basicbutton2",UDim2.new(0,0,0,160),"other cheats")
+makepagebutton("cheats",UDim2.new(0,0,0,160),"Exploits")
 --makepagebutton("scripts",UDim2.new(0,0,0,240),"Scripts")
 
 
@@ -551,4 +551,21 @@ maketogglebutton("coinfinder", "farmingpage", "Coin Farmer", rizz, function()
 
 end, function()
 	coinfinderenabled = false
+end)
+
+maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", t, function()
+	local players = game:GetService("Players")
+	local rs = game:GetService("ReplicatedStorage").Morphs
+	for i,v in pairs(players:GetChildren()) do
+	    local chara = v.Character
+ 	   for i2,v2 in pairs(chara:GetDescendants()) do
+   	    	 if v2.Name == "AttackHumanoid" then
+    	    --local g = chara:Find
+   
+   		       v.Character.HumanoidRootPart.Transparency = 0.5
+   		       v.Character.HumanoidRootPart.Size = Vector3.new(tonumber(t),tonumber(t),tonumber(t))
+      		  end
+   		 end
+	end
+
 end)
