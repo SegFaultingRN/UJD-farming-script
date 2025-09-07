@@ -571,4 +571,3 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", rok, functi
 	end
 
 end)
-maketextboxbutton()
