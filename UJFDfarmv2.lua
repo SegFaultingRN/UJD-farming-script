@@ -561,7 +561,7 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", usetext, fu
 	for i,v in pairs(players:GetChildren()) do
 	    local chara = v.Character
  	   for i2,v2 in pairs(chara:GetDescendants()) do
-   	    	 if v2.Name == "AttackHumanoid" then
+   	    	 if v2.Name == "AttackHumanoid" or v2.Name == "Headz" then
     	    	--local g = chara:Find
 			   --print(t)
    		       v.Character.HumanoidRootPart.Transparency = 0.5
