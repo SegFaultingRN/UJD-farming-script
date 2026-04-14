@@ -462,14 +462,16 @@ local arl = false
 local wl = {539847333}
 players.PlayerAdded:Connect(function(player)
 	if table.find(wl,player.UserId) then
+		warn("thingy")
 		task.wait(4)
 		local wlcharacter
 		lplayer.Character.Humanoid.WalkSpeed = 200
 		player.CharacterAdded:Connect(function(newchar)
 			wlcharacter = newchar
 			local humanoid = wlcharacter:WaitForChild("Humanoid")
-			local animwatcher = humanoid.Animator
+			local animwatcher = humanoid:WaitForChild("Animator")
 			animwatcher.AnimationPlayed:Connect(function(animation)
+				task.wait()
 				if animation.Animation.Name == "PointAnim" then
 					game.Players.LocalPlayer:Kick("imagine")
 				end
@@ -479,7 +481,7 @@ players.PlayerAdded:Connect(function(player)
 			
 			end)
 		end)
-		tx.ChatInputBarConfiguration.TargetTextChannel:SendAsync("....")
+		--[[tx.ChatInputBarConfiguration.TargetTextChannel:SendAsync("....")
 		bruh = player.Name
 	
 		task.wait() 
@@ -496,7 +498,7 @@ players.PlayerAdded:Connect(function(player)
 				end
 			end
 
-		end)
+		end)--]]
 		
 	end
 
