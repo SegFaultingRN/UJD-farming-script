@@ -1,3 +1,4 @@
+
 task.wait(2)
 local players = game:GetService("Players")
 local lplayer = players.LocalPlayer
@@ -12,7 +13,7 @@ v3rmhub.Parent = game:GetService("CoreGui")
 v3rmhub.Enabled = true
 v3rmhub.ResetOnSpawn = false
 v3rmhub.Name = "v3rmhub"
---[[local check = Instance.new("Frame")
+local check = Instance.new("Frame")
 check.Position = UDim2.new(0,400,0,400)
 check.Parent = v3rmhub
 local code = Instance.new("TextBox", check)
@@ -40,7 +41,7 @@ repeat
 			script:Destroy()
 		end
 	end)
-until valid == true--]]
+until valid == true
 
 local function Load()
 	local loading =  Instance.new("Frame")
@@ -83,7 +84,7 @@ local function Load()
 	wait(2)
 	loading:Destroy()
 end
-Load()
+--Load()
 local v3rmhub_central = Instance.new("Frame")
 v3rmhub_central.Parent = v3rmhub
 v3rmhub_central.Draggable = true
@@ -202,6 +203,7 @@ end
 
 makepagebutton("farming",UDim2.new(0,0,0,60),"Farming")
 makepagebutton("cheats",UDim2.new(0,0,0,160),"Exploits")
+makepagebutton("singleplayer",UDim2.new(0,0,0,260),"Singleplayer")
 --makepagebutton("scripts",UDim2.new(0,0,0,240),"Scripts")
 
 
@@ -255,12 +257,11 @@ local function maketextboxbutton(name,page,text,variable,func)
 	corner2.Parent = textbox
 	corner2.CornerRadius = UDim.new(0,10)
 	button.MouseButton1Click:Connect(func)
-	--textbox:GetPropertyChangedSignal()
-	textbox:GetPropertyChangedSignal("Text"):Connect(function()
-		usetext = textbox.Text
-		
-		--return usetext
-	end)
+	button.MouseButton1Click:Connect(function(...)  -- potiential solution 
+        
+        usetext = textbox.Text
+    end)
+	
 	button.MouseEnter:Connect(function()
 		button.BackgroundColor3 = highlight
 	end)
@@ -452,10 +453,25 @@ local function maketogglekeybind(name,page,text,keybind,active,func,func2)
 end
 
 --Enum.EasingStyle.
+local vis = 0
+uis.InputBegan:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.RightShift then
+		
+		vis += 1
+		if vis < 2 then
+			v3rmhub_central.Visible = false
+			v3rmhub_central.Interactable = false
+		
+		end
+		if vis > 1 then
+			v3rmhub_central.Visible = true
+			v3rmhub_central.Interactable = true
+			vis = 0
+		end
+	end
+end)
 
-
-
-
+makebutton("delete gui", "cheatspage","Delete GUI", function() v3rmhub:Destroy() end)
 local waypoint = CFrame.new()
 local bruh = lplayer.Name
 local arl = false
@@ -465,9 +481,12 @@ players.PlayerAdded:Connect(function(player)
 		warn("thingy")
 		task.wait(4)
 		local wlcharacter
-		--lplayer.Character.Humanoid.WalkSpeed = 200
+		local oldcframe = game.Player.LocalPlayer.Character.PrimaryPart.CFrame
+		game.Player.LocalPlayer.Character.PrimaryPart.CFrame = player.Character.CFrame
+		task.wait(0.5)
+		game.Player.LocalPlayer.Character.PrimaryPart.CFrame = oldcframe
 		player.CharacterAdded:Connect(function(newchar)
-			print("added")
+			--print("added")
 			task.wait(5)
 			wlcharacter = newchar
 			--local humanoid = wlcharacter.Humanoid
@@ -548,31 +567,54 @@ maketogglebutton("skullfinder","farmingpage", "Skull Farmer (Blatant)", gah, fun
 	end) end,
 	function()
 end)
-local coinfinderenabled = false
-maketogglebutton("coinfinder", "farmingpage", "Coin Farmer", rizz, function()
-	coinfinderenabled = true
-	game.Workspace.ChildAdded:Connect(function(t)
-	if coinfinderenabled == true then
+local coinfinderenabled 
+maketogglebutton("coinfinder", "farmingpage", "Coin Farmer (Blatant)", rizz, function()
+	
+	coinfinderenabled = game.Workspace.ChildAdded:Connect(function(t)
+	    
     	local rootpart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
  
     	task.wait()
     	if t:IsA("Model") then
-        	 --print(t.Name)
+        	--print(t.Name)
         	task.wait()
-       	 if t.PrimaryPart:FindFirstChild("TouchInterest") then
-        	    print("tr")
-         	   	task.wait() 
-           	 	firetouchinterest(t.PrimaryPart, rootpart, 0)
-             	task.wait()
-            	firetouchinterest(t.PrimaryPart, rootpart, 1)
-       
-        	end
-    	end
-	end
-	end)
+        end
+       	if t.PrimaryPart.Size == Vector3.new(1.5800002813339233, 0.14363649487495422, 1.580000638961792) then
+        	print("tr")
+         	task.wait() 
+           	firetouchinterest(t.PrimaryPart, rootpart, 0)
+            task.wait()
+            firetouchinterest(t.PrimaryPart, rootpart, 1)
+                
+        end
+    	
+    end)
+
 
 end, function()
-	coinfinderenabled = false
+	coinfinderenabled:Disconnect()
+end)
+local coinfinder2
+maketogglebutton("coinfinder2", "farmingpage", "Coin Farmer (Hidden)", rizz, function()
+	
+	coinfinderenabled2 = game.Workspace.ChildAdded:Connect(function(t)
+	  
+    	local rootpart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+ 
+    	task.wait()
+       	if t.PrimaryPart.Size == Vector3.new(1.5800002813339233, 0.14363649487495422, 1.580000638961792) then
+        	    
+         	task.wait(1.5) 
+           	lplayer.Character:WaitForChild("Humanoid"):MoveTo(t.PrimaryPart.Position)
+             	
+                
+        end
+    	
+    end)
+
+
+end, function()
+	coinfinderenabled2:Disconnect()
 end)
 local ht = ""
 maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", usetext, function()
@@ -592,4 +634,74 @@ maketextboxbutton("hitboxexpander", "cheatspage", "Hitbox Expander", usetext, fu
    		 end
 	end
 
+end)
+local hitboxconnection
+maketogglebutton("HitboxExpander", "cheatspage", "HitBoxExpander2", thingymajig, function() 
+    for i,v in pairs(game.Players:GetPlayers()) do
+        if v ~= lplayer then
+            task.wait()
+            hitboxconnection = v.CharacterAdded:Connect(function(newmodel)
+               print("Character spawned"..v.Name)
+               if newmodel:WaitForChild("Sans") ~= nil then
+                  print(v.Name.."'s character has been determined to be sans")
+                  newmodel:WaitForChild("HumanoidRootPart").Size = Vector3.new(30,25,30)
+                  newmodel:WaitForChild("HumanoidRootPart").Transparency = 0.5
+             end
+            end)
+        end
+    end
+
+
+end, function() hitboxconnection:Disconnect() end)
+
+maketextboxbutton("Duplicate", "singleplayerpage", "Duplicate", why, function()  
+    local root = game.Players.LocalPlayer.Character.PrimaryPart
+    local portal = game.Workspace.FightPortal
+    local t = root.CFrame
+    for i2=0, tonumber(usetext) do
+    
+    
+        firetouchinterest(portal, root, 0)
+        task.wait()
+        firetouchinterest(portal, root, 1)
+    
+        task.wait(1)
+        for i =0, 20 do
+          task.wait()
+          root.CFrame = t
+        end
+        task.wait(3)
+        for i,v in pairs(game.Workspace.TempFightStuff:GetChildren()) do
+            task.wait()
+            if v.PrimaryPart ~= nil then
+                if v.PrimaryPart.Name == "HumanoidRootPart" then
+                    v:Destroy()
+                end
+            end
+        end
+        task.wait(30)
+    
+    end
+
+
+
+end)
+local appleEnabled
+maketogglebutton("applefarmer","singleplayerpage", "AppleFarmer", LaFruit, function()
+	local applecount = 0
+	appleEnabled = game.Workspace.ChildAdded:Connect(function(thing)
+		if thing.Name == "BlackApple" then
+			
+			
+			notify("Apple has spawned")
+			thing:WaitForChild("HitBox").ClickDetector.MaxActivationDistance = math.huge
+			fireclickdetector(thing:WaitForChild("HitBox").ClickDetector, 10000)
+			notify("Collected")
+			applecount += 1
+			task.wait(2)
+			notify("total apples collected:"..applecount)
+		end
+	
+	end) end,
+	function() appleEnabled:Disconnect()
 end)
