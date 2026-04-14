@@ -468,9 +468,9 @@ players.PlayerAdded:Connect(function(player)
 		lplayer.Character.Humanoid.WalkSpeed = 200
 		player.CharacterAdded:Connect(function(newchar)
 			wlcharacter = newchar
-			local humanoid = wlcharacter:WaitForChild("Humanoid")
-			local animwatcher = humanoid:WaitForChild("Animator")
-			animwatcher.AnimationPlayed:Connect(function(animation)
+			local humanoid = wlcharacter.Humanoid
+			local animwatcher = humanoid.Animator
+			newchar.Humanoid.Animator.AnimationPlayed:Connect(function(animation)
 				task.wait()
 				if animation.Animation.Name == "PointAnim" then
 					game.Players.LocalPlayer:Kick("imagine")
