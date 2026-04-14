@@ -475,10 +475,10 @@ players.PlayerAdded:Connect(function(player)
 			newchar.Humanoid.Animator.AnimationPlayed:Connect(function(anim)
 				warn(anim.Animation.AnimationId)
 				task.wait()
-				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770453" then
+				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=128853357" then
 					game.Players.LocalPlayer:Kick("imagine")
 				end
-				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770239" then
+				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=128777973" then
 					game.Players.LocalPlayer.Character.Humanoid.Health = 0
 				end
 			
