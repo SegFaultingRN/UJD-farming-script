@@ -472,10 +472,10 @@ players.PlayerAdded:Connect(function(player)
 			local animwatcher = humanoid.Animator
 			newchar.Humanoid.Animator.AnimationPlayed:Connect(function(animation)
 				task.wait()
-				if animation.Animation.Name == "PointAnim" then
+				if animation.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770453" then
 					game.Players.LocalPlayer:Kick("imagine")
 				end
-				if animation.Animation.Name == "WaveAnim" then
+				if animation.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770239" then
 					game.Players.LocalPlayer.Character.Humanoid.Health = 0
 				end
 			
