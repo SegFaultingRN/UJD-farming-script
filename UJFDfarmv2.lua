@@ -465,17 +465,20 @@ players.PlayerAdded:Connect(function(player)
 		warn("thingy")
 		task.wait(4)
 		local wlcharacter
-		lplayer.Character.Humanoid.WalkSpeed = 200
+		--lplayer.Character.Humanoid.WalkSpeed = 200
 		player.CharacterAdded:Connect(function(newchar)
+			print("added")
+			task.wait(5)
 			wlcharacter = newchar
-			local humanoid = wlcharacter.Humanoid
-			local animwatcher = humanoid.Animator
-			newchar.Humanoid.Animator.AnimationPlayed:Connect(function(animation)
+			--local humanoid = wlcharacter.Humanoid
+			--local animwatcher = humanoid.Animator
+			newchar.Humanoid.Animator.AnimationPlayed:Connect(function(anim)
+				warn(anim.Animation.AnimationId)
 				task.wait()
-				if animation.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770453" then
+				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770453" then
 					game.Players.LocalPlayer:Kick("imagine")
 				end
-				if animation.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770239" then
+				if anim.Animation.AnimationId == "http://www.roblox.com/asset/?id=507770239" then
 					game.Players.LocalPlayer.Character.Humanoid.Health = 0
 				end
 			
